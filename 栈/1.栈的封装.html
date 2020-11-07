@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    class Stack {
+        constructor() {
+            //栈中的属性
+            this.items = []
+        }
+
+        //    1.将元素压入栈
+        push(element) {
+            this.items.push(element)
+        }
+
+        //    2.从栈中取出元素
+        pop() {
+            return this.items.pop()
+        }
+
+        //    3.查看一下栈顶元素
+        peek() {
+            return this.items[this.items.length - 1]
+        }
+
+        //    4.判断栈是否为空
+        isEmpty() {
+            return this.items.length === 0
+        }
+
+        //    5.获取栈中元素的个数
+        size() {
+            return this.items.length
+        }
+
+        //    6.toString 方法
+        toString() {
+            let resultString = ''
+            for (let i = 0; i < this.items.length; i++) {
+                resultString += this.items[i] + ' '
+            }
+            return resultString
+        }
+    }
+
+    const stack = new Stack()
+    stack.push(20)
+    stack.push(30)
+    // alert(stack.toString())
+
+    //    将十进制转成二进制
+    function decToBin(num) {
+        //    定义一个栈对象
+        let newStack = new Stack()
+
+        while (num > 0) {
+            //    获取余数 放入到栈中
+            newStack.push(num % 2)
+            //    获取整除后的结果，作为下一次计算
+            num = Math.floor(num / 2)
+        }
+        let binaryString = ''
+        while(!newStack.isEmpty()){
+            binaryString += newStack.pop()
+        }
+        return binaryString
+    }
+
+    alert(decToBin(100))
+</script>
+</html>
